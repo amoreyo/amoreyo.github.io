@@ -118,7 +118,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">2</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">1</span></a>
 
   </li>
   </ul>
@@ -144,86 +144,6 @@
 
           <div class="content index posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://amoreyo.github.io/2021/07/07/yolov3%20loss/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Summer can">
-      <meta itemprop="description" content="拖鞋在門口">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Amoreyoのblog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/07/yolov3%20loss/" class="post-title-link" itemprop="url">YOLOv3 loss</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-07-07 17:10:28" itemprop="dateCreated datePublished" datetime="2021-07-07T17:10:28+08:00">2021-07-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-08 16:54:48" itemprop="dateModified" datetime="2021-07-08T16:54:48+08:00">2021-07-08</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="YOLOv3的网络结构图"><a href="#YOLOv3的网络结构图" class="headerlink" title="YOLOv3的网络结构图"></a>YOLOv3的网络结构图</h2><p><img src="/home/amoreyo/blog/source/img/1.jpg" alt="1"></p>
-<p>YOLOv3采用了Darknet53的backbone（采用了Resnet的残差结构），其输出为3张不同尺度的特征图（采用了SSD的思想)。特征图越小，每个grid cell对应的感受野越大，对应大目标的检测。</p>
-<p>拿上图中右下角 ( 255 ∗ 13 ∗ 13 ) (255<em>13</em>13) (255∗13∗13)的特征图为例， 13 ∗ 13 是特征图大小，255可以拆分为 3 ∗ ( 4 + 1 + 80 ) ，3表示一个grid cell对应3个anchor，4表示anchor的中心坐标xy和宽高wh，1表示该anchor是否包含目标的置信度，80表示coco数据集的80个类别。</p>
-<p>anchor的选择与yolov2一样，采用了kmeans的思想。不同的是这里的K值为9。聚类后，尺寸最大的三个框分配给特征图最小的（感受野大），用来检测大目标；最小的3个框分给特征图最大的（感受野小），用以检测小目标；剩下的3个框分给中间尺寸的特征图。</p>
-<p>因此，yolov3的输出维度是 B a t c h ∗ 3 ∗ ( 4 + 1 + 80 ) ∗ ( 13 ∗ 13 + 26 ∗ 26 + 52 ∗ 52 ) 。</p>
-<h2 id="YOLOv3损失函数的全貌"><a href="#YOLOv3损失函数的全貌" class="headerlink" title="YOLOv3损失函数的全貌"></a>YOLOv3损失函数的全貌</h2><p><img src="/home/amoreyo/blog/source/img/image-20210707181654748.png" alt="image-20210707181654748"></p>
-<h2 id="剖析损失函数"><a href="#剖析损失函数" class="headerlink" title="剖析损失函数"></a>剖析损失函数</h2><p><img src="/1.jpg"></p>
-<blockquote>
-<p>根据pytorch的代码，Yolov3的损失函数主要包括3个部分：</p>
-<ul>
-<li>对于正例，bounding box和ground true之间的位置坐标（x，y）和大小（w，h）的差异，采用MSE损失函数 『对应损失函数图中的1，2两行』</li>
-<li>对于正例和负例，计算置信度和真实之间的交叉熵 『对应损失函数图中的3，4两行』</li>
-<li>对于正例，计算80个类别维度与target的one-hot向量间的交叉熵损失 『对应损失函数图中的第5行』</li>
-</ul>
-</blockquote>
-<p>**参数  **</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
       
   
   
@@ -354,7 +274,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
